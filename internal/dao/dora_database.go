@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"github.com/caarlos0/env"
@@ -20,37 +21,42 @@ type Config struct {
 }
 
 type Database struct {
-	db *sql.DB
+	Db *sql.DB
 }
 
-func NewDatabase() *Database {
+func NewDatabase(ctx context.Context) (*Database, error) {
 	var config Config
 	if err := env.Parse(&config); err != nil {
 		log.Fatalf("Error on configure Database client. Error : %s", err)
 	}
 
-	return NewDatabaseWithSettings(config)
-}
-
-func NewDatabaseWithSettings(config Config) *Database {
-
-	conn, err := connection(config)
+	database, err := NewDatabaseWithSettings(ctx, config)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 
-	return &Database{db: conn}
+	return database, nil
+}
+
+func NewDatabaseWithSettings(ctx context.Context, config Config) (*Database, error) {
+
+	conn, err := connection(ctx, config)
+	if err != nil {
+		return nil, err
+	}
+
+	return &Database{Db: conn}, nil
 
 }
 
-func connection(config Config) (*sql.DB, error) {
+func connection(ctx context.Context, config Config) (*sql.DB, error) {
 
 	dataSourceName := getDataSourceName(config)
 	db, err := sql.Open(config.Drive, dataSourceName)
 	if err != nil {
 		panic(err)
 	}
-	err = db.Ping()
+	err = db.PingContext(ctx)
 	return db, err
 
 }
