@@ -1,6 +1,6 @@
 package github
 
-// https://docs.github.com/pt/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request_review
+// ReviewRequestEvent https://docs.github.com/pt/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request_review
 type ReviewRequestEvent struct {
 	Action      string      `json:"action"`
 	Review      Review      `json:"review"`
@@ -9,7 +9,7 @@ type ReviewRequestEvent struct {
 	Sender      User        `json:"sender"`
 }
 
-// https://docs.github.com/pt/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+// PullRequestEvent https://docs.github.com/pt/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
 type PullRequestEvent struct {
 	Action      string      `json:"action"`
 	PullRequest PullRequest `json:"pull_request"`
