@@ -16,3 +16,12 @@ type PullRequestEvent struct {
 	Repository  Repository  `json:"repository"`
 	Sender      User        `json:"sender"`
 }
+
+// PullRequestReviewCommentEvent https://docs.github.com/pt/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request_review_comment
+type PullRequestReviewCommentEvent struct {
+	Action      string      `json:"action"`
+	Comment     Comment     `json:"comment"`
+	PullRequest PullRequest `json:"pull_request"`
+	Repository  Repository  `json:"repository"`
+	Sender      User        `json:"sender"`
+}
