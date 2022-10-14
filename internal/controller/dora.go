@@ -8,7 +8,15 @@ import (
 )
 
 type DoraController struct {
-	repository repository.DoraRepository
+	repository *repository.DoraRepository
+}
+
+func NewDoraController() *DoraController {
+	doraRepository, err := repository.NewDoraRepository()
+	if err != nil {
+		return nil
+	}
+	return &DoraController{repository: doraRepository}
 }
 
 func (cc DoraController) Create(ctx *gin.Context) {
