@@ -18,8 +18,8 @@ func (repository DoraRepository) Create() (*types.PR, error) {
 	return nil, nil
 }
 
-func NewDoraRepository(ctx context.Context) (*DoraRepository, error) {
-	db, err := dao.NewDatabase(ctx)
+func NewDoraRepository() (*DoraRepository, error) {
+	db, err := dao.NewDatabase()
 	if err != nil {
 		return nil, err
 	}

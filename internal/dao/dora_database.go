@@ -1,7 +1,6 @@
 package dao
 
 import (
-	"context"
 	"database/sql"
 	"fmt"
 	"github.com/caarlos0/env"
@@ -24,13 +23,13 @@ type Database struct {
 	Db *sql.DB
 }
 
-func NewDatabase(ctx context.Context) (*Database, error) {
+func NewDatabase() (*Database, error) {
 	var config Config
 	if err := env.Parse(&config); err != nil {
 		log.Fatalf("Error on configure Database client. Error : %s", err)
 	}
 
-	database, err := NewDatabaseWithSettings(ctx, config)
+	database, err := NewDatabaseWithSettings(config)
 	if err != nil {
 		return nil, err
 	}
@@ -38,9 +37,9 @@ func NewDatabase(ctx context.Context) (*Database, error) {
 	return database, nil
 }
 
-func NewDatabaseWithSettings(ctx context.Context, config Config) (*Database, error) {
+func NewDatabaseWithSettings(config Config) (*Database, error) {
 
-	conn, err := connection(ctx, config)
+	conn, err := connection(config)
 	if err != nil {
 		return nil, err
 	}
@@ -49,14 +48,14 @@ func NewDatabaseWithSettings(ctx context.Context, config Config) (*Database, err
 
 }
 
-func connection(ctx context.Context, config Config) (*sql.DB, error) {
+func connection(config Config) (*sql.DB, error) {
 
 	dataSourceName := getDataSourceName(config)
 	db, err := sql.Open(config.Drive, dataSourceName)
 	if err != nil {
 		panic(err)
 	}
-	err = db.PingContext(ctx)
+	err = db.Ping()
 	return db, err
 
 }
