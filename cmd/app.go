@@ -8,7 +8,7 @@ import (
 func main() {
 	router := gin.Default()
 	doraController := controller.NewDoraController()
-	router.GET("/", doraController.Create)
+	router.POST("/", doraController.Create)
 
 	err := router.Run("localhost:8080")
 	if err != nil {
