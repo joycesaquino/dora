@@ -3,8 +3,8 @@ package github
 import "time"
 
 type Repository struct {
-	ID                  int         `json:"id"`
-	NodeID              string      `json:"node_id"`
+	Id                  int         `json:"id"`
+	NodeId              string      `json:"node_id"`
 	Name                string      `json:"name"`
 	FullName            string      `json:"full_name"`
 	Private             bool        `json:"private"`

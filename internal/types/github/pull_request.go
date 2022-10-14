@@ -4,8 +4,8 @@ import "time"
 
 type PullRequest struct {
 	URL                string        `json:"url"`
-	ID                 int           `json:"id"`
-	NodeID             string        `json:"node_id"`
+	Id                 int           `json:"id"`
+	NodeId             string        `json:"node_id"`
 	HTMLURL            string        `json:"html_url"`
 	DiffURL            string        `json:"diff_url"`
 	PatchURL           string        `json:"patch_url"`

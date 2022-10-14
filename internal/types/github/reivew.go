@@ -3,11 +3,11 @@ package github
 import "time"
 
 type Review struct {
-	ID                int         `json:"id"`
-	NodeID            string      `json:"node_id"`
+	Id                int         `json:"id"`
+	NodeId            string      `json:"node_id"`
 	User              User        `json:"user"`
 	Body              interface{} `json:"body"`
-	CommitID          string      `json:"commit_id"`
+	CommitId          string      `json:"commit_id"`
 	SubmittedAt       time.Time   `json:"submitted_at"`
 	State             string      `json:"state"`
 	HTMLURL           string      `json:"html_url"`

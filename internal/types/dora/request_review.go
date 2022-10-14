@@ -4,20 +4,20 @@ import "time"
 
 type User struct {
 	Login string `json:"login"`
-	ID    int    `json:"id"`
+	Id    int    `json:"id"`
 }
 
 type Dora struct {
 	Action     string `json:"action"`
 	User       User   `json:"user"`
 	Repository struct {
-		ID       int    `json:"id"`
+		Id       int    `json:"id"`
 		Name     string `json:"name"`
 		FullName string `json:"full_name"`
 		Owner    User   `json:"owner"`
 	}
 	PullRequest struct {
-		ID                 int           `json:"id"`
+		Id                 int           `json:"id"`
 		URL                string        `json:"url"`
 		Title              string        `json:"title"`
 		Assignee           interface{}   `json:"assignee"`
