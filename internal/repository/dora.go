@@ -11,7 +11,7 @@ type DoraRepository struct {
 }
 
 type DoraRepositoryInterface interface {
-	Create(ctx context.Context, customer *types.Dora) (*types.Dora, error)
+	Create(ctx context.Context, customer *types.PR) (*types.PR, error)
 }
 
 func (repository DoraRepository) Create() {

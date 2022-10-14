@@ -2,10 +2,10 @@ package github
 
 type User struct {
 	Login             string `json:"login"`
-	ID                int    `json:"id"`
-	NodeID            string `json:"node_id"`
+	Id                int    `json:"id"`
+	NodeId            string `json:"node_id"`
 	AvatarURL         string `json:"avatar_url"`
-	GravatarID        string `json:"gravatar_id"`
+	GravatarId        string `json:"gravatar_id"`
 	URL               string `json:"url"`
 	HtmlUrl           string `json:"html_url"`
 	FollowersUrl      string `json:"followers_url"`
