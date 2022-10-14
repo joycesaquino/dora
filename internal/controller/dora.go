@@ -11,18 +11,18 @@ type DoraController struct {
 	repository repository.DoraRepository
 }
 
-func (cc DoraController) Create(c *gin.Context) {
+func (cc DoraController) Create(ctx *gin.Context) {
 	var pullRequest github.PullRequestEvent
-	if err := c.ShouldBindJSON(&pullRequest); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	if err := ctx.ShouldBindJSON(&pullRequest); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	response, err := cc.repository.Create()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err)
+		ctx.JSON(http.StatusInternalServerError, err)
 		return
 	}
 
-	c.JSON(http.StatusCreated, response)
+	ctx.JSON(http.StatusCreated, response)
 }
