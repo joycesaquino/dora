@@ -14,8 +14,8 @@ type DoraRepositoryInterface interface {
 	Create(ctx context.Context, customer *types.PR) (*types.PR, error)
 }
 
-func (repository DoraRepository) Create() (*types.PR, error) {
-	return nil, nil
+func (repository DoraRepository) Create(pr *types.PR) (*types.PR, error) {
+	return pr, nil
 }
 
 func NewDoraRepository() (*DoraRepository, error) {

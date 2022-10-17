@@ -1,22 +1,24 @@
 package controller
 
 import (
-	"dora/internal/repository"
+	"dora/internal/service"
 	"dora/internal/types/github"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type DoraController struct {
-	repository *repository.DoraRepository
+	service *service.GithubService
 }
 
 func NewDoraController() *DoraController {
-	doraRepository, err := repository.NewDoraRepository()
-	if err != nil {
+
+	githubService := service.NewGithubService()
+	if githubService == nil {
 		return nil
 	}
-	return &DoraController{repository: doraRepository}
+
+	return &DoraController{service: githubService}
 }
 
 func (cc DoraController) Create(ctx *gin.Context) {
@@ -26,7 +28,7 @@ func (cc DoraController) Create(ctx *gin.Context) {
 		return
 	}
 
-	response, err := cc.repository.Create()
+	response, err := cc.service.Create(pullRequest)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, err)
 		return

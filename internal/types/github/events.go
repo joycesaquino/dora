@@ -30,8 +30,8 @@ type PullRequestReviewCommentEvent struct {
 	Sender      User        `json:"sender"`
 }
 
-func (request PullRequestEvent) Converter() dora.PR {
-	return dora.PR{
+func (request PullRequestEvent) Converter() *dora.PR {
+	return &dora.PR{
 		Action: request.Action,
 		User: dora.User{
 			Login: request.Sender.Login,
