@@ -26,7 +26,7 @@ type Database struct {
 func NewDatabase() (*Database, error) {
 	var config Config
 	if err := env.Parse(&config); err != nil {
-		log.Fatalf("Error on configure Database client. Error : %s", err)
+		log.Fatalf("[DAO] - Error on configure Database client. Error : %s", err)
 	}
 
 	database, err := NewDatabaseWithSettings(config)

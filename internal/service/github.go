@@ -1,9 +1,9 @@
 package service
 
 import (
+	"dora/internal/entity"
 	"dora/internal/repository"
-	"dora/internal/types/dora"
-	"dora/internal/types/github"
+	"dora/internal/types"
 )
 
 type GithubService struct {
@@ -19,7 +19,7 @@ func NewGithubService() *GithubService {
 	return &GithubService{repository: doraRepository}
 }
 
-func (s GithubService) Create(event github.PullRequestEvent) (*dora.PR, error) {
+func (s GithubService) Create(event types.PullRequestEvent) (*entity.PR, error) {
 
 	pr, err := s.repository.Create(event.Converter())
 	if err != nil {

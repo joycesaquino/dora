@@ -2,8 +2,9 @@ package controller
 
 import (
 	"dora/internal/service"
-	"dora/internal/types/github"
+	"dora/internal/types"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -22,11 +23,13 @@ func NewDoraController() *DoraController {
 }
 
 func (cc DoraController) Create(ctx *gin.Context) {
-	var pullRequest github.PullRequestEvent
+	var pullRequest types.PullRequestEvent
 	if err := ctx.ShouldBindJSON(&pullRequest); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+
+	log.Println(pullRequest)
 
 	response, err := cc.service.Create(pullRequest)
 	if err != nil {

@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 	"dora/internal/dao"
-	types "dora/internal/types/dora"
+	types "dora/internal/entity"
 )
 
 type DoraRepository struct {
