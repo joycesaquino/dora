@@ -5,4 +5,4 @@ Dora metrics for
 - Jira
   - Task, subtasks
 - Google Meeting
-  - Meetings
+  - Meetings, tasks
