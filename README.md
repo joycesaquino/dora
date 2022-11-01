@@ -1,2 +1,8 @@
 # Dora
-Dora metrics for github integrations
+Dora metrics for 
+- GitHub
+  - PR e Review
+- Jira
+  - Task, subtasks
+- Google Meeting
+  - Meetings
